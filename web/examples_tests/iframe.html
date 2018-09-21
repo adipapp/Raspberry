@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>IFrame</title>
+    <script type="text/javascript" src="image_manipulation_email.js"></script>
+</head>
+<body>
+    <button onclick="zoom('in')">Zoom IN</button>
+    <button onclick="zoom('out')">Zoom OUT</button>
+    <button onclick="zoom('def')">Eredeti méret</button>
+    <input value="ide írja az email címet" width="50" id="email"/>
+    <button onclick="email()">Email küldése</button>
+    <select title="Kép választása" onchange="modifyimage(this)">
+        <option value="fig.svg">Grafikon</option>
+        <option value="pic.jpg">Autós kép</option>
+    </select>
+    <div>
+        <iframe src="picture.html" frameborder="1" id="frame" height="500" width="700"></iframe>
+    </div>
+</body>
+</html>
