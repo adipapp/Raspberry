@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Realtime Chart Drawing</title>
+    <script type="text/javascript" src="draw_to_canvas.js"></script>
+    <script type="text/javascript" src="update_canvas.js"></script>
+</head>
+
+<body>
+    <div style="width:50%; float:left">
+        <label>Ide írja be az értékeket vesszővel elválasztva: <input type="text" id="data" onchange="draw(this)" /> &isin; [0, 500]</label>
+        <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+    </div>
+    <div style="width:50%; float:right">
+        <label>Ennyi ideig fusson(s): <input type="text" id="until" /></label>
+        <label>Ennyi időnként "mérjen"(s): <input type="text" id="step" /></label>
+        <button id="start" onclick="draw_random_dyn()">Indít</button>
+        <canvas id="myCanvas2" width="500" height="500" style="border:1px solid #000000;"></canvas>
+    </div>
+</body>
+</html>
