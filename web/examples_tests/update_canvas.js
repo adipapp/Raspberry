@@ -18,12 +18,12 @@ function draw_random_dyn() {
 
     var i = 0;
     
-    set = setInterval(function () {
-        if (until < new Date().getTime()) clearInterval(1);
+    setInterval(function () {
+        if (until < new Date().getTime() || i + 1 > (until - step - start) / step) clearInterval(1);
         else {
             i++;
             var rnd = Math.round(Math.random() * canvas.height);
-            x = canvas.width / ((until - start) / step + 1) * i;
+            x = canvas.width / ((until - step - start) / step + 1) * i;
             y = canvas.height - rnd;
             ctx.lineTo(x, y);
             ctx.stroke();
