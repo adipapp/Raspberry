@@ -1,0 +1,70 @@
+﻿body{
+    min-width:1200px;
+}
+
+#background{
+    height:100%;
+}
+
+#background::after{
+    min-width:1200px;
+    height:100%;
+    content:"";
+    background-image:url("img/mobilis.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    opacity:0.3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1; 
+}
+
+#diaklabor{
+    width:100%;
+}
+
+#img_diaklabor{
+    width:inherit;
+    height:inherit;
+}
+
+#wrapper{
+    width:100%;
+    overflow:hidden;
+}
+
+#raspberry{
+    width:30%;
+    float:left;
+    padding-top:50px;
+}
+
+#img_raspberry{
+    width:100%;
+    min-width:400px;
+}
+
+#welcome_text{
+    float:left;
+    padding-top:130px;
+    width:70%;
+    min-width:500px;
+}
+
+.text{
+    text-align:center;
+    font-family:Consolas;
+    font-size:56px;
+}
+
+#h3{
+    font-size:36px;
+}
+
+#par{
+    font-family:Arial;
+    font-size:28px;
+}
