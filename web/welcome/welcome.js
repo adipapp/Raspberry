@@ -3,7 +3,7 @@ function changePage() {
 }
 
 function openMain(){
-    var win = window.open("main.html", "main", "toolbar=no,titlebar=no");
+    var win = window.open("/main", "main", "toolbar=no,titlebar=no");
 }
 
 window.onload = function () {
