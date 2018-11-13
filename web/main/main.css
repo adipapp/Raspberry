@@ -80,7 +80,7 @@
     padding:10px;
 }
 
-#start {
+.button_style {
     font-family: 'Franklin Gothic';
     font-size: 20px;
     padding: 10px;
@@ -88,6 +88,17 @@
     margin-bottom:10px;
 }
 
+.input_style {
+    font-family: 'Franklin Gothic';
+    font-size: 20px;
+}
+
 #time,#freq{
     margin:10px;
+}
+
+#result_box{
+    visibility:collapse;
+    text-align:center;
+    margin:auto;
 }

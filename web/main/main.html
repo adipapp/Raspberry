@@ -10,12 +10,12 @@
     <div id="background">
         <div id="report_box">
             <p>Mérési Jegyzőkönyv</p>
-            <label id="report_label">Írd be a jegyzőkönyv címét: <input type="text" width="50" id="report_input" /></label>
+            <label id="report_label">Írd be a jegyzőkönyv címét: <input type="text" width="50" id="report_input" class="input_style"/></label>
             <p>A jegyzőköny neve az következő lesz: <label id="report_filename"></label></p>
         </div>
         <div id="wrapper">
             <div id="measure_select_box">
-                <label>Mit mérjünk? <select id="measure_select"></select></label>
+                <label>Mit mérjünk? <select id="measure_select" class="input_style"></select></label>
             </div>
             <div id="sensor_box">
                 <img id="img_sensor" />
@@ -24,18 +24,18 @@
                 <img id="img_sensor_wiring" />
             </div>
             <div id="measure_data_box">
-                <label>Mérési időtartam: <input id="time" /> s</label><br />
-                <label>Mérési frekvencia: <input id="freq" /> Hz</label><br />
+                <label>Mérési időtartam: <input id="time"  class="input_style"/> s</label><br />
+                <label>Mérési frekvencia: <input id="freq"  class="input_style"/> Hz</label><br />
                 A fenti idő alatt ennyi mérést fog végezni a Raspberry: <label id="count"></label>
             </div>
             <div id="result_box">
                 <p id="result"></p>
-                <button id="copy_clipboard">Másolás vágólapra</button>
-                <button id="open_geogebra">Geogebra megnyitása</button>
-                <button id="open_matplotlib">Adatok ábrázolása grafikonon</button>
+                <button id="copy_clipboard" class="button_style">Másolás vágólapra</button>
+                <button id="open_geogebra" class="button_style">Geogebra megnyitása</button>
+                <button id="open_matplotlib" class="button_style">Adatok ábrázolása grafikonon</button>
             </div>
             <div id="start_box">
-                <button id="start">Start</button><br />
+                <button id="start" class="button_style">Start</button><br />
                 <label id="countdown"></label>
             </div>
         </div>

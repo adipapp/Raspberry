@@ -1,11 +1,16 @@
-﻿function writeParsedData() {
-    var result;
+﻿function handleError() {
+
+}
+
+function writeParsedData() {
+    var result = "";
     for (var i in dataList) {
         for (var j in dataList[i]) {
-            result += dataList[i][j] + "    ";
+            result += dataList[i][j] + "\t";
         }
-        result += "\n";
+        result += "\n<br/>";
     }
+    document.getElementById("result_box").style.visibility = "visible";
     document.getElementById("result").innerHTML = result;
 }
 
@@ -18,12 +23,15 @@ function parseData(rawData) {
 
 function getPHP(filename, sensor, time, freq) {
     var http = new XMLHttpRequest();
-    http.open("GET", "get.php?filename=" + filename + "&time=" + time + "&freq=" + freq + "&scriptname=" + list[sensor][3]);
+    //http.open("GET", "get.php?filename=" + filename + "&time=" + time + "&freq=" + freq + "&scriptname=" + list[sensor][3]);
+    http.open("GET", "/main/get.php?sensor=" + list[sensor][3] + "&time=" + time + "&freq=" + freq);
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
-            parseData(http.response);
-            console.log("OK");
-            writeParsedData();
+            if (http.response[0] == '0') {
+                parseData(http.response.substr(1));
+                writeParsedData();
+            }
+            else handleError();
         }
     }
     http.send();

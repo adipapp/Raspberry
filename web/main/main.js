@@ -50,7 +50,7 @@ function changeSelection() {
 function copyToClipboard() {
     var copyText = document.getElementById("result");
     var temp = document.createElement("textarea");
-    temp.value = copyText.innerHTML;
+    temp.value = copyText.innerHTML.replace(/<br>/g, "");
     document.body.appendChild(temp);
     temp.select();
     document.execCommand("copy");
@@ -58,7 +58,7 @@ function copyToClipboard() {
 }
 
 function openGeogebra() {
-    window.open("../geogebra/geogebra.html", "geogebra", "toolbar=no,titlebar=no");
+    window.open("/geogebra", "geogebra", "toolbar=no,titlebar=no");
 }
 
 window.onkeyup = function () {
