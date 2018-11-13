@@ -28,6 +28,12 @@
                 <label>Mérési frekvencia: <input id="freq" /> Hz</label><br />
                 A fenti idő alatt ennyi mérést fog végezni a Raspberry: <label id="count"></label>
             </div>
+            <div id="result_box">
+                <p id="result"></p>
+                <button id="copy_clipboard">Másolás vágólapra</button>
+                <button id="open_geogebra">Geogebra megnyitása</button>
+                <button id="open_matplotlib">Adatok ábrázolása grafikonon</button>
+            </div>
             <div id="start_box">
                 <button id="start">Start</button><br />
                 <label id="countdown"></label>
@@ -37,5 +43,6 @@
     <script src="sensorList.js"></script>
     <script src="main.js"></script>
     <script src="runScript.js"></script>
+    <script src="data.js"></script>
 </body>
 </html>

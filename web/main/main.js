@@ -4,7 +4,6 @@
     else return null;
 }
 
-
 function updateReport() {
     var date = new Date();
     var strDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
@@ -48,6 +47,20 @@ function changeSelection() {
     else document.getElementById("measure_data_box").style.visibility = "visible";
 }
 
+function copyToClipboard() {
+    var copyText = document.getElementById("result");
+    var temp = document.createElement("textarea");
+    temp.value = copyText.innerHTML;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand("copy");
+    document.body.removeChild(temp);
+}
+
+function openGeogebra() {
+    window.open("../geogebra/geogebra.html", "geogebra", "toolbar=no,titlebar=no");
+}
+
 window.onkeyup = function () {
     updateReport();
     updateCount();
@@ -59,4 +72,6 @@ window.onload = function () {
     document.getElementById("measure_select").onchange = changeSelection;
     document.getElementById("measure_data_box").style.visibility = "hidden";
     document.getElementById("start").onclick = preprocessCall;
+    document.getElementById("copy_clipboard").onclick = copyToClipboard;
+    document.getElementById("open_geogebra").onclick = openGeogebra;
 }

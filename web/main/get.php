@@ -1,8 +1,8 @@
 <?php
 	$time = $_GET['time'];
 	set_time_limit($time+5);
-	exec("python ..\..\python\\" . $_GET['filename'] . " " . $_GET['sensor'] . " " . $time . " " . $_GET['freq'], $output);
+	exec("python ../../python/" $_GET['scriptname'] . " " . $_GET['filename'] . " " . $_GET['freq'] . " " . $time, $output);
 	foreach($output as $out) {
-		echo $out, '<br/>';
+		echo $out, '##';
 	}
 ?>
