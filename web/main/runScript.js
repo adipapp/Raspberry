@@ -24,8 +24,8 @@ function parseData(rawData) {
 
 function getPHP(filename, sensor, time, freq) {
     var http = new XMLHttpRequest();
-    //http.open("GET", "get.php?filename=" + filename + "&time=" + time + "&freq=" + freq + "&scriptname=" + list[sensor][3]);
-    http.open("GET", "/main/get.php?sensor=" + list[sensor][3] + "&time=" + time + "&freq=" + freq);
+    http.open("GET", "get.php?filename=" + filename + "&time=" + time + "&freq=" + freq + "&scriptname=" + list[sensor][3]);
+    //http.open("GET", "/main/get.php?sensor=" + list[sensor][3] + "&time=" + time + "&freq=" + freq);
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
             if (http.response[0] == '0') {
