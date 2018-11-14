@@ -1,5 +1,5 @@
 ﻿function handleError() {
-
+    document.getElementById("result").innerHTML = "Hiba a mérés elvégzése során :("
 }
 
 function writeParsedData() {
@@ -15,6 +15,7 @@ function writeParsedData() {
 }
 
 function parseData(rawData) {
+    dataList.length = 0;
     var lines = rawData.toString().split('##');
     for (var i in lines) {
         dataList.push(lines[i].split('#'));
@@ -30,11 +31,29 @@ function getPHP(filename, sensor, time, freq) {
             if (http.response[0] == '0') {
                 parseData(http.response.substr(1));
                 writeParsedData();
+                document.getElementById("start").disabled = false;
             }
             else handleError();
         }
     }
     http.send();
+}
+
+var inter;
+
+function setTimer() {
+    var counter = document.getElementById("counter");
+    var content = counter.textContent;
+    var split = content.split(':');
+    var time = parseInt(split[0]) * 60 + parseInt(split[1]);
+    time -= 1;
+    if (time <= 0) clearInterval(inter);
+    counter.textContent = Math.floor(time / 60) + ":" + Math.floor(time % 60);
+}
+
+function startTimer(time) {
+    document.getElementById("counter").textContent = Math.floor(time / 60) + ":" + Math.floor(time % 60);
+    inter = setInterval(setTimer, 1000)
 }
 
 function preprocessCall() {
@@ -44,6 +63,9 @@ function preprocessCall() {
     var sensor = document.getElementById("measure_select").selectedIndex;
     if (sensor == 0) return window.alert("Válassz szenzort!");
     if (time === null || freq === null) return window.alert("Adj meg helyes mérési paramétereket!");
+    startTimer(time);
+    document.getElementById("result").innerHTML = "";
+    document.getElementById("start").disabled = true;
     getPHP(filename, sensor, time, freq);
 }
 

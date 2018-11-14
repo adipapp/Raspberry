@@ -41,10 +41,14 @@ function changeSelection() {
     img_sensor_wiring.setAttribute("src", list[selectedIndex][2]);
     if (parseInt(selectedIndex) == 0) {
         document.getElementById("measure_data_box").style.visibility = "hidden";
+        document.getElementById("start").disabled = true;
         img_sensor.removeAttribute("src");
         img_sensor_wiring.removeAttribute("src");
     }
-    else document.getElementById("measure_data_box").style.visibility = "visible";
+    else {
+        document.getElementById("measure_data_box").style.visibility = "visible";
+        document.getElementById("start").disabled = false;
+    }
 }
 
 function copyToClipboard() {

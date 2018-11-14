@@ -1,0 +1,66 @@
+﻿body{
+    min-width:850px;
+}
+
+#background::after{
+    min-width:850px;
+    content:"";
+    background-image:url("http://raspberry.local/img/mobilis.jpg");
+    background-size:cover;
+    opacity:0.3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position:fixed;
+    z-index: -1; 
+}
+
+#diaklabor{
+    width:100%;
+}
+
+#img_diaklabor{
+    width:inherit;
+    height:inherit;
+}
+
+#wrapper{
+    width:100%;
+    overflow:hidden;
+}
+
+#raspberry{
+    width:30%;
+    float:left;
+    padding-top:50px;
+}
+
+#img_raspberry{
+    width:100%;
+    min-width:300px;
+    max-width:520px;
+    cursor:pointer;
+}
+
+#welcome_text{
+    float:left;
+    padding-top:130px;
+    width:70%;
+    min-width:500px;
+}
+
+.text{
+    text-align:center;
+    font-family:'Franklin Gothic';
+    font-size:66px;
+}
+
+#h3{
+    font-size:36px;
+}
+
+#par{
+    font-family:Arial;
+    font-size:28px;
+}
