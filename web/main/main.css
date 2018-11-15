@@ -1,6 +1,15 @@
-﻿body {
+﻿@font-face{
+    font-family:'Gothic';
+    src:url('../franklin-gothic.ttf');
+}
+
+body {
     min-width: 850px;
-    font-family:'Franklin Gothic';
+    font-family:Gothic, sans-serif;
+}
+
+h1{
+    font-size:34px;
 }
 
 #background::after {
@@ -21,6 +30,9 @@
     width: 100%;
     text-align: center;
     font-size: 20px;
+    background-color: rgba(255,255,255,0.5);
+    padding:20px;
+    margin:10px;
 }
 
 #wrapper {
@@ -66,8 +78,6 @@
     width: 100%;
     text-align: center;
     font-size: 20px;
-    
-
 }
 
 #start_box {
@@ -76,12 +86,12 @@
     position: fixed;
     bottom: 50px;
     right: 50px;
-    background-color:rgba(255,255,255,0.3);
+    background-color:rgba(255,255,255,0.5);
     padding:10px;
 }
 
 .button_style {
-    font-family: 'Franklin Gothic';
+    font-family:Gothic, sans-serif;
     font-size: 20px;
     padding: 10px;
     color: forestgreen;
@@ -89,7 +99,7 @@
 }
 
 .input_style {
-    font-family: 'Franklin Gothic';
+    font-family:Gothic, sans-serif;
     font-size: 20px;
 }
 
