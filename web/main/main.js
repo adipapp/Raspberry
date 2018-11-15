@@ -7,7 +7,7 @@
 function updateReport() {
     var date = new Date();
     var strDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-    document.getElementById("report_filename").textContent = "meresi_jegyzokonyv_" + strDate +"_"+ document.getElementById("report_input").value + ".csv";
+    document.getElementById("report_filename").textContent = "meresi_jegyzokonyv_" + strDate +"_"+ document.getElementById("report_input").value + ".xlsx";
 }
 
 function updateCount() {

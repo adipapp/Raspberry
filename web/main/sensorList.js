@@ -2,8 +2,8 @@
 
 var list = [
     ["Válassz", "", "", ""],
-    ["Hőmérséklet(folyadék)", "../img/sensor_temp_liq.JPG", "../img/sensor_temp_liq_wiring.JPG", "aqtemp.py"],
-    ["Fényerősség", "../img/sensor_light.JPG", "../img/sensor_light_wiring.JPG", "light.py"],
-    ["Gyorsulás", "../img/sensor_gyro.JPG", "../img/sensor_gyro_wiring.JPG", "gyro.py"],
-    ["Hőmérséklet(gáz)", "../img/sensor_temp.JPG", "../img/sensor_temp_wiring.JPG", "temp.py"]
+    ["Hőmérséklet(folyadék)", "../img/sensor_temp_liq.jpg", "../img/sensor_temp_liq_wiring.jpg", "aqtemp.py"],
+    ["Fényerősség", "../img/sensor_light.jpg", "../img/sensor_light_wiring.jpg", "light.py"],
+    ["Gyorsulás", "../img/sensor_gyro.jpg", "../img/sensor_gyro_wiring.jpg", "gyro.py"],
+    ["Hőmérséklet(gáz)", "../img/sensor_temp.jpg", "../img/sensor_temp_wiring.jpg", "temp.py"]
 ];
