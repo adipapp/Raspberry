@@ -1,5 +1,6 @@
 ﻿function handleError() {
-    document.getElementById("result").innerHTML = "Hiba a mérés elvégzése során :("
+    document.getElementById("result").innerHTML = "Hiba a mérés elvégzése során :(";
+	document.getElementById("result_box").style.visibility = "visible";
 }
 
 function writeParsedData() {
@@ -31,9 +32,10 @@ function getPHP(filename, sensor, time, freq) {
             if (http.response[0] == '0') {
                 parseData(http.response.substr(1));
                 writeParsedData();
-                document.getElementById("start").disabled = false;
+                
             }
             else handleError();
+		document.getElementById("start").disabled = false;
         }
     }
     http.send();
