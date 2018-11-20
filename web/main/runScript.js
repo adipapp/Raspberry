@@ -29,10 +29,9 @@ function getPHP(filename, sensor, time, freq) {
     //http.open("GET", "/main/get.php?sensor=" + list[sensor][3] + "&time=" + time + "&freq=" + freq);
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
-            if (http.response[0] == '0') {
-                parseData(http.response.substr(1));
+            if (http.response.length == 0) {
+                parseData(http.response);
                 writeParsedData();
-                
             }
             else handleError();
 		document.getElementById("start").disabled = false;
