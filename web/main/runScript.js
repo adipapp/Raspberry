@@ -23,14 +23,25 @@ function parseData(rawData) {
     }
 }
 
+function getTXT() {
+    var http = new XMLHttpRequest();
+    http.open("GET", "data.txt");
+    http.onreadystatechange = function () {
+        if (http.readyState == 4 && http.status == 200) {
+            if (http.response.length != 0) return http.responseText;
+            else handleError();
+        }
+    }
+    http.send();
+}
+
 function getPHP(filename, sensor, time, freq) {
     var http = new XMLHttpRequest();
     http.open("GET", "get.php?filename=" + filename + "&time=" + time + "&freq=" + freq + "&scriptname=" + list[sensor][3]);
-    //http.open("GET", "/main/get.php?sensor=" + list[sensor][3] + "&time=" + time + "&freq=" + freq);
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
-            if (http.response.length == 0) {
-                parseData(http.response);
+            if (http.response.length != 0) {
+                parseData(getTXT());
                 writeParsedData();
             }
             else handleError();

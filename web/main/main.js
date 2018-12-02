@@ -65,6 +65,22 @@ function openGeogebra() {
     window.open("/geogebra", "geogebra", "toolbar=no,titlebar=no");
 }
 
+function sendEmail() {
+    var dialog = window.prompt("Add meg az email cimed!");
+    var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(dialog===null || regex.test(String(email).toLowerCase())) return;
+    var filename = document.getElementById("report_filename").textContent;
+    var http = new XMLHttpRequest();
+    http.open("GET", "sendmail.php?address="+dialog+"&filename="+filename);
+    http.onreadystatechange = function () {
+        if (http.readyState == 4 && http.status == 200) {
+            if (http.response.length != 0) window.alert("Sikeres kuldes! :)");
+            else window.alert("Sikertelen kuldes! :(");
+        }
+    }
+    http.send();
+}
+
 window.onkeyup = function () {
     updateReport();
     updateCount();
@@ -78,4 +94,5 @@ window.onload = function () {
     document.getElementById("start").onclick = preprocessCall;
     document.getElementById("copy_clipboard").onclick = copyToClipboard;
     document.getElementById("open_geogebra").onclick = openGeogebra;
+    document.getElementById("sendmail").onclick = sendEmail;
 }
