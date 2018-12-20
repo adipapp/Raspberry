@@ -68,7 +68,7 @@ function openGeogebra() {
 function sendEmail() {
     var dialog = window.prompt("Add meg az email cimed!");
     var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(dialog===null || regex.test(String(email).toLowerCase())) return;
+    if(dialog===null || regex.test(String(dialog).toLowerCase())) return;
     var filename = document.getElementById("report_filename").textContent;
     var http = new XMLHttpRequest();
     http.open("GET", "sendmail.php?address="+dialog+"&filename="+filename);

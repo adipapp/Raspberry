@@ -8,6 +8,7 @@ function writeParsedData() {
     for (var i in dataList) {
         for (var j in dataList[i]) {
             result += dataList[i][j] + "\t";
+		console.log(dataList[i][j]);
         }
         result += "\n<br/>";
     }
@@ -15,24 +16,47 @@ function writeParsedData() {
     document.getElementById("result").innerHTML = result;
 }
 
-function parseData(rawData) {
-    dataList.length = 0;
-    var lines = rawData.toString().split('##');
-    for (var i in lines) {
-        dataList.push(lines[i].split('#'));
-    }
-}
+
 
 function getTXT() {
     var http = new XMLHttpRequest();
     http.open("GET", "data.txt");
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
-            if (http.response.length != 0) return http.responseText;
+            if (http.responseText.length != 0){ console.log(http.responseText); return http.responseText; }
             else handleError();
         }
     }
     http.send();
+}
+
+
+
+
+function parseData() {
+	var result = "";
+	var http = new XMLHttpRequest();
+    http.open("GET", "data.txt");
+    http.onreadystatechange = function () {
+    if (http.readyState == 4 && http.status == 200) {
+    if (http.responseText.length != 0){
+    		var lines = http.responseText.split('##');
+    		for (var k in lines) {
+				console.log(lines[k]);
+				for (var i in lines[k].split('#')) {
+					result += lines[k].split('#')[i] + "\t";
+					console.log(lines[k].split('#')[i]);				
+				}
+				result += "\n<br/>";
+    		}
+    		document.getElementById("result_box").style.visibility = "visible";
+			document.getElementById("result").innerHTML = result;		
+	 }
+            else handleError();
+        }
+    }
+    http.send();
+    
 }
 
 function getPHP(filename, sensor, time, freq) {
@@ -41,8 +65,8 @@ function getPHP(filename, sensor, time, freq) {
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
             if (http.response.length != 0) {
-                parseData(getTXT());
-                writeParsedData();
+				console.log(http.response);
+                parseData();
             }
             else handleError();
 		document.getElementById("start").disabled = false;
