@@ -3,36 +3,6 @@
 	document.getElementById("result_box").style.visibility = "visible";
 }
 
-function writeParsedData() {
-    var result = "";
-    for (var i in dataList) {
-        for (var j in dataList[i]) {
-            result += dataList[i][j] + "\t";
-		console.log(dataList[i][j]);
-        }
-        result += "\n<br/>";
-    }
-    document.getElementById("result_box").style.visibility = "visible";
-    document.getElementById("result").innerHTML = result;
-}
-
-
-
-function getTXT() {
-    var http = new XMLHttpRequest();
-    http.open("GET", "data.txt");
-    http.onreadystatechange = function () {
-        if (http.readyState == 4 && http.status == 200) {
-            if (http.responseText.length != 0){ console.log(http.responseText); return http.responseText; }
-            else handleError();
-        }
-    }
-    http.send();
-}
-
-
-
-
 function parseData() {
 	var result = "";
 	var http = new XMLHttpRequest();
@@ -42,10 +12,8 @@ function parseData() {
     if (http.responseText.length != 0){
     		var lines = http.responseText.split('##');
     		for (var k in lines) {
-				console.log(lines[k]);
 				for (var i in lines[k].split('#')) {
 					result += lines[k].split('#')[i] + "\t";
-					console.log(lines[k].split('#')[i]);				
 				}
 				result += "\n<br/>";
     		}
@@ -65,7 +33,6 @@ function getPHP(filename, sensor, time, freq) {
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
             if (http.response.length != 0) {
-				console.log(http.response);
                 parseData();
             }
             else handleError();
@@ -104,4 +71,3 @@ function preprocessCall() {
     document.getElementById("start").disabled = true;
     getPHP(filename, sensor, time, freq);
 }
-

@@ -9,7 +9,7 @@ import Adafruit_BMP.BMP085 as BMP085
 sensor = BMP085.BMP085()
 
 #txt file létrehozása
-f=open("pressfile.txt","w")
+f=open("data.txt","w")
 # münkafüzet és lap generálása
 workbook = xlsxwriter.Workbook(sys.argv[1])
 worksheet = workbook.add_worksheet('RapberryPiMérés')

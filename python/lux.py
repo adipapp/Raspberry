@@ -1,14 +1,14 @@
-﻿# coding=utf-8
-#adatmozgatáshoz szükséges csomag(ok)
-import xlsxwriter
-import sys
+# coding=utf-8
 #méréshez szükséges csomagok
 import time
-from w1thermsensor import W1ThermSensor
-
-
-#mérés maga
-sensor = W1ThermSensor()
+import sys
+import datetime as dt
+import xlsxwriter
+import board
+import busio
+import adafruit_tsl2591
+i2c = busio.I2C(board.SCL, board.SDA)
+sensor = adafruit_tsl2591.TSL2591(i2c)
 
 #txt file létrehozása
 f=open("data.txt","w")
@@ -19,7 +19,9 @@ bold = workbook.add_format({'bold': True})
 
 #A címek meghatározása
 worksheet.write('A1','Időpillanat(s)',bold)
-worksheet.write('B1','Hőmérésklet(C*)',bold)
+worksheet.write('B1','Fényerősség(lux)',bold)
+worksheet.write('C1','Látható fény(lux)',bold)
+worksheet.write('D1','Infravörös(lux)',bold)
 #a szenzor adatainak beszerzése
 frek=int(sys.argv[2])
 nagyt=int(1/frek)
@@ -30,11 +32,14 @@ ciklusseged=0
 row=1
 column=0
 while ciklus<idotartam:
-    temperature = sensor.get_temperature()
     f.write("%d#" %ciklusseged*nagyt)
-    f.write("%d##\r\n"%temperature)
+    f.write("%d#" %sensor.lux)
+    f.write("%d#" %sensor.visible)
+    f.write("%d##\r\n"%sensor.infrared)
     worksheet.write(row,0,ciklusseged*nagyt)
-    worksheet.write(row,1,temperature)
+    worksheet.write(row,1,sensor.lux)
+    worksheet.write(row,2,sensor.visible)
+    worksheet.write(row,3,sensor.infrared)
     row+=1
     time.sleep(nagyt)
     ciklus=ciklusseged*nagyt
@@ -43,5 +48,4 @@ while ciklus<idotartam:
 # mérés lezárása
 workbook.close()
 f.close()
-
 

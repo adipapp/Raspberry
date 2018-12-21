@@ -6,11 +6,10 @@ import xlsxwriter
 import Adafruit_ADXL345
 
 accel = Adafruit_ADXL345.ADXL345()
-
-#txt file létrehozása
-f=open("gyrofile.txt","w")
+#txtfile
+f=open("data.txt","w")
 # münkafüzet és lap generálása
-workbook = xlsxwriter.Workbook('Meresijegyzokonyv_3ax.xlsx')
+workbook = xlsxwriter.Workbook(sys.argv[1])
 worksheet = workbook.add_worksheet('RapberryPiMérés')
 bold = workbook.add_format({'bold': True})
 
@@ -22,7 +21,7 @@ worksheet.write('D1','Z',bold)
 
 #a szenzor adatainak beszerzése
 frek=int(sys.argv[2])
-nagyt=1/frek
+nagyt=int(1/frek)
 idotartam=int(sys.argv[3])
 #ciklushoz kapcsolódó változók deklarálása
 ciklus=0
@@ -50,3 +49,4 @@ while ciklus<idotartam:
 #lezárás
 workbook.close()
 f.close()
+print('valami')
