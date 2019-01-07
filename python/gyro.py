@@ -21,7 +21,7 @@ worksheet.write('D1','Z',bold)
 
 #a szenzor adatainak beszerzése
 frek=int(sys.argv[2])
-nagyt=int(1/frek)
+nagyt=1/frek
 idotartam=int(sys.argv[3])
 #ciklushoz kapcsolódó változók deklarálása
 ciklus=0
@@ -33,7 +33,7 @@ column=0
 while ciklus<idotartam:
     x, y, z = accel.read()
     #print(ciklusseged*nagyt,'#',x,'#',y,'#',z)
-    f.write("%d#" %ciklusseged*nagyt)
+    f.write("%d#" %ciklusseged*int(nagyt))
     f.write("%d#" %x)
     f.write("%d#" %y)
     f.write("%d##\r\n"%z)
@@ -49,4 +49,3 @@ while ciklus<idotartam:
 #lezárás
 workbook.close()
 f.close()
-print('valami')

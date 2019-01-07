@@ -1,4 +1,4 @@
-﻿# coding=utf-8
+# coding=utf-8
 #adatmozgatáshoz szükséges csomag(ok)
 import xlsxwriter
 import sys
@@ -22,7 +22,7 @@ worksheet.write('A1','Időpillanat(s)',bold)
 worksheet.write('B1','Hőmérésklet(C*)',bold)
 #a szenzor adatainak beszerzése
 frek=int(sys.argv[2])
-nagyt=int(1/frek)
+nagyt=1/frek
 idotartam=int(sys.argv[3])
 #ciklushoz kapcsolódó változók deklarálása
 ciklus=0
@@ -31,7 +31,7 @@ row=1
 column=0
 while ciklus<idotartam:
     temperature = sensor.get_temperature()
-    f.write("%d#" %ciklusseged*nagyt)
+    f.write("%d#" %ciklusseged*int(nagyt))
     f.write("%d##\r\n"%temperature)
     worksheet.write(row,0,ciklusseged*nagyt)
     worksheet.write(row,1,temperature)
